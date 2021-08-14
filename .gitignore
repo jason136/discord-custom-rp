@@ -1,3 +1,12 @@
+# Visual Studio direc
+.vs/
+
+# Debug Tools
+Debug/
+
+# Build Files
+x64/
+
 # Prerequisites
 *.d
 

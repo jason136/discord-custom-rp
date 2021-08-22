@@ -1,38 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
+
 #include "file.h"
 
 using namespace std;
 
-    //const char* clientID;
-    //const char* state;
-    //const char* details;
-    //int64_t startTimestamp;
-    //int64_t endTimestamp;
-    //const char* largeImageKey;
-    //const char* largeImageText;
-    //const char* smallImageKey;
-    //const char* smallImageText;
-    //const char* partyID;
-    //int partySize;
-    //int partyMax;
+char filename[] = "config.txt";
+discord_fields values = { "a", "a", "a", 1, 1111111, "a", "a", "a", "a", "a", 1, 5 };
 
-std::list<std::string> GetFile() {
-    char filename[] = "config.txt";
-    ifstream file(filename);
-    std::list<std::string> data;
+void GetFile() {
+    FILE *file;
+    file = fopen(filename, "r");
 
     if (!file) {
-        ofstream file(filename);
-        for (int x = 0; x < 12; x++) {
-            file << "0\n";
-        }
-        file.close();
+        file = fopen(filename, "w");
+        fwrite(&values, sizeof(struct discord_fields), 1, file);
+        fclose(file);
     }
     else {
-        string text;
-        while (getline(file, text)) {
-            data.push_back(text);
-        }
-        file.close();
+        struct discord_fields data;
+        while (fread(&data, sizeof(struct discord_fields), 1, file))
+        fclose(file);
+        values = data;
     }
-    return data;
+}
+
+void RefreshFile() {
+    FILE *file;
+    file = fopen(filename, "w");
+    fwrite(&values, sizeof(struct discord_fields), 1, file);
+    fclose(file);
+    file = fopen(filename, "r");
+    while (fread(&values, sizeof(struct discord_fields), 1, file))
+    fclose(file);
 }

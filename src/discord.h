@@ -15,6 +15,6 @@ void handleDiscordSpectateGame(const char* spectateSecret);
 
 void handleDiscordJoinRequest(const DiscordUser* request);
 
-void InitDiscord(std::string clientID);
+void InitDiscord(const char* clientID);
 
-void UpdatePresence();
+void UpdatePresence(struct discord_fields values);

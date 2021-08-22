@@ -1,4 +1,5 @@
 #include "discord.h"
+#include "file.h"
 #include "../include/discord_rpc.h"
 
 void handleDiscordReady(const DiscordUser* request) {
@@ -25,7 +26,7 @@ void handleDiscordJoinRequest(const DiscordUser* request) {
 
 }
 
-void InitDiscord(std::string clientID)
+void InitDiscord(const char* clientID)
 {
 	DiscordEventHandlers handlers;
 	memset(&handlers, 0, sizeof(handlers));
@@ -37,43 +38,43 @@ void InitDiscord(std::string clientID)
 	handlers.joinRequest = handleDiscordJoinRequest;
 
 	// Discord_Initialize(const char* applicationId, DiscordEventHandlers * handlers, int autoRegister, const char* optionalSteamId);
-	Discord_Initialize(clientID.c_str(), &handlers, 1, NULL);
+	Discord_Initialize(clientID, &handlers, 1, NULL);
 }
 
-//void UpdatePresence()
+//void UpdatePresence(struct discord_fields data)
 //{
-//    char buffer[256];
-//    DiscordRichPresence discordPresence;
-//    memset(&discordPresence, 0, sizeof(discordPresence));
-//    discordPresence.state = "In a Group";
-//    sprintf_s(buffer, "Ranked | Mode:");
-//    discordPresence.details = buffer;
-//    discordPresence.endTimestamp = time(0) + 5 * 60;
-//    discordPresence.largeImageKey = "canary-large";
-//    discordPresence.smallImageKey = "ptb-small";
-//    discordPresence.partyId = "123";
-//    discordPresence.partySize = 1;
-//    discordPresence.partyMax = 6;
-//    discordPresence.matchSecret = "4b2fdce12f639de8bfa7e3591b71a0d679d7c93f";
-//    discordPresence.spectateSecret = "e7eb30d2ee025ed05c71ea495f770b76454ee4e0";
-//    discordPresence.instance = 1;
-//    Discord_UpdatePresence(&discordPresence);
+//	DiscordRichPresence discordPresence;
+//	memset(&discordPresence, 0, sizeof(discordPresence));
+//	discordPresence.state = data.state;
+//	discordPresence.details = data.details;
+//	discordPresence.startTimestamp = data.startTimestamp;
+//	discordPresence.endTimestamp = data.endTimestamp;
+//	discordPresence.largeImageKey = data.largeImageKey;
+//	discordPresence.largeImageText = data.largeImageText;
+//	discordPresence.smallImageKey = data.smallImageKey;
+//	discordPresence.smallImageText = data.smallImageText;
+//	discordPresence.partyId = data.partyID;
+//	discordPresence.partySize = data.partySize;
+//	discordPresence.partyMax = data.partyMax;
+//	discordPresence.joinSecret = "";
+//	Discord_UpdatePresence(&discordPresence);
 //}
 
-void UpdatePresence()
+void UpdatePresence(struct discord_fields data)
 {
 	DiscordRichPresence discordPresence;
 	memset(&discordPresence, 0, sizeof(discordPresence));
-	discordPresence.state = "Playing Solo";
-	discordPresence.details = "Competitive";
-	discordPresence.startTimestamp = 2432423;
-	discordPresence.endTimestamp = 1507665886;
+	discordPresence.state = "adasd";
+	discordPresence.details = "asdasd";
+	discordPresence.startTimestamp = 234234;
+	discordPresence.endTimestamp = 2342342;
 	discordPresence.largeImageKey = "hayasaka";
-	discordPresence.largeImageText = "Numbani";
-	discordPresence.smallImageText = "Rogue - Level 100";
-	discordPresence.partyId = "ae488379-351d-4a4f-ad32-2b9b01c91657";
-	discordPresence.partySize = 1;
-	discordPresence.partyMax = 5;
-	discordPresence.joinSecret = "MTI4NzM0OjFpMmhuZToxMjMxMjM= ";
+	discordPresence.largeImageText = "asdasd";
+	discordPresence.smallImageKey = "hayasaka";
+	discordPresence.smallImageText = "asdasd";
+	discordPresence.partyId = "asdasd";
+	discordPresence.partySize = 2;
+	discordPresence.partyMax = 7;
+	discordPresence.joinSecret = "";
 	Discord_UpdatePresence(&discordPresence);
 }

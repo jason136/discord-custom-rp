@@ -18,4 +18,4 @@ void handleDiscordSpectateGame(const char* spectateSecret);
 
 void handleDiscordJoinRequest(const DiscordUser* request);
 
-void InitDiscord();
+void InitDiscord(std::string clientID);

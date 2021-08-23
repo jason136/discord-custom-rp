@@ -30,11 +30,11 @@ private:
 	wxBoxSizer* hbox;
 	wxStaticBox* box;
 
-	wxTextCtrl* stateCtrl;
-	wxStaticText* stateText;
-
 	wxTextCtrl* detailsCtrl;
 	wxStaticText* detailsText;
+
+	wxTextCtrl* stateCtrl;
+	wxStaticText* stateText;
 
 	wxTextCtrl* startTSCtrl;
 	wxStaticText* startTSText;
@@ -61,6 +61,7 @@ private:
 	wxStaticText* partyMaxText;
 
 	wxButton* okButton;
+	wxButton* closeButton;
 };
 
 #endif

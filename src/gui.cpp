@@ -21,11 +21,11 @@ Dialouge::Dialouge(const wxString& title) : wxDialog(NULL, -1, title, wxDefaultP
 
 	box = new wxStaticBox(panel, wxID_ANY, wxT(""), wxPoint(5, 5), wxSize(325, 320));
 
-	stateCtrl = new wxTextCtrl(panel, wxID_ANY, values.state, wxPoint(125, 20), wxSize(200, 24));
-	stateText = new wxStaticText(panel, wxID_ANY, "State: ", wxPoint(10, 20));
+	detailsCtrl = new wxTextCtrl(panel, wxID_ANY, values.details, wxPoint(125, 20), wxSize(200, 24));
+	detailsText = new wxStaticText(panel, wxID_ANY, "Details: ", wxPoint(10, 20));
 
-	detailsCtrl = new wxTextCtrl(panel, wxID_ANY, values.details, wxPoint(125, 50), wxSize(200, 24));
-	detailsText = new wxStaticText(panel, wxID_ANY, "Details: ", wxPoint(10, 50));
+	stateCtrl = new wxTextCtrl(panel, wxID_ANY, values.state, wxPoint(125, 50), wxSize(200, 24));
+	stateText = new wxStaticText(panel, wxID_ANY, "State: ", wxPoint(10, 50));
 
 	startTSCtrl = new wxTextCtrl(panel, wxID_ANY, std::to_string(values.startTimestamp), wxPoint(125, 80), wxSize(200, 24));
 	startTSText = new wxStaticText(panel, wxID_ANY, "Start Timestamp: ", wxPoint(10, 80));
@@ -52,6 +52,7 @@ Dialouge::Dialouge(const wxString& title) : wxDialog(NULL, -1, title, wxDefaultP
 	partyMaxText = new wxStaticText(panel, wxID_ANY, "Party Max: ", wxPoint(10, 290));
 
 	okButton = new wxButton(this, wxID_ANY, wxT("Ok"), wxDefaultPosition, wxSize(150, 30));
+	closeButton = new wxButton(this, wxID_ANY, wxT("Cancel"), wxDefaultPosition, wxSize(150, 30));
 
 	stateCtrl->SetMaxLength(128);
 	detailsCtrl->SetMaxLength(128);
@@ -60,7 +61,7 @@ Dialouge::Dialouge(const wxString& title) : wxDialog(NULL, -1, title, wxDefaultP
 	largeKeyCtrl->SetMaxLength(32);
 	largeTextCtrl->SetMaxLength(128);
 	smallKeyCtrl->SetMaxLength(32);
-	smallTextCtrl->SetMaxLength(10);
+	smallTextCtrl->SetMaxLength(128);
 	partySizeCtrl->SetMaxLength(10);
 
 	okButton->Bind(wxEVT_BUTTON, [&](wxCommandEvent& event) {
@@ -79,8 +80,12 @@ Dialouge::Dialouge(const wxString& title) : wxDialog(NULL, -1, title, wxDefaultP
 		Destroy();
 		});
 
-	hbox->Add(okButton, 1);
+	closeButton->Bind(wxEVT_BUTTON, [&](wxCommandEvent& event) {
+		Destroy();
+		});
 
+	hbox->Add(okButton, 1);
+	hbox->Add(closeButton, 1, wxLEFT, 5);
 	vbox->Add(panel, 1);
 	vbox->Add(hbox, 0, wxALIGN_CENTER | wxTOP | wxBOTTOM, 10);
 
@@ -95,7 +100,7 @@ Frame::Frame() : wxFrame(nullptr, wxID_ANY, "Discord Custom Rich Presence Client
 
 	panel = new wxPanel(this);
 	clientID = new wxButton(panel, wxID_ANY, "Input Client ID", wxPoint(10, 10), wxSize(100, 20));
-	input = new wxButton(panel, wxID_ANY, "Update Presencee", wxPoint(10, 80));
+	input = new wxButton(panel, wxID_ANY, "Update Presence", wxPoint(10, 80));
 	clientIDmsg = new wxStaticText(panel, wxID_ANY, "Currently Loaded Client ID: ", wxPoint(10, 45));
 	clientIDtxt = new wxStaticText(panel, wxID_ANY, values.clientID, wxPoint(160, 45));
 

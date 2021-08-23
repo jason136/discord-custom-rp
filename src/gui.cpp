@@ -13,42 +13,42 @@
 
 extern discord_fields values;
 
-Dialouge::Dialouge(const wxString& title) : wxDialog(NULL, -1, title, wxDefaultPosition, wxSize(500, 420)) {
+Dialouge::Dialouge(const wxString& title) : wxDialog(NULL, -1, title, wxDefaultPosition, wxSize(360, 420)) {
 	panel = new wxPanel(this, -1);
 
 	vbox = new wxBoxSizer(wxVERTICAL);
 	hbox = new wxBoxSizer(wxHORIZONTAL);
 
-	box = new wxStaticBox(panel, wxID_ANY, wxT(""), wxPoint(5, 5), wxSize(400, 300));
+	box = new wxStaticBox(panel, wxID_ANY, wxT(""), wxPoint(5, 5), wxSize(325, 320));
 
-	stateCtrl = new wxTextCtrl(panel, wxID_ANY, values.state, wxPoint(200, 20), wxSize(250, 24));
+	stateCtrl = new wxTextCtrl(panel, wxID_ANY, values.state, wxPoint(125, 20), wxSize(200, 24));
 	stateText = new wxStaticText(panel, wxID_ANY, "State: ", wxPoint(10, 20));
 
-	detailsCtrl = new wxTextCtrl(panel, wxID_ANY, values.details, wxPoint(200, 50), wxSize(250, 24));
+	detailsCtrl = new wxTextCtrl(panel, wxID_ANY, values.details, wxPoint(125, 50), wxSize(200, 24));
 	detailsText = new wxStaticText(panel, wxID_ANY, "Details: ", wxPoint(10, 50));
 
-	startTSCtrl = new wxTextCtrl(panel, wxID_ANY, std::to_string(values.startTimestamp), wxPoint(200, 80), wxSize(250, 24));
+	startTSCtrl = new wxTextCtrl(panel, wxID_ANY, std::to_string(values.startTimestamp), wxPoint(125, 80), wxSize(200, 24));
 	startTSText = new wxStaticText(panel, wxID_ANY, "Start Timestamp: ", wxPoint(10, 80));
 
-	endTSCtrl = new wxTextCtrl(panel, wxID_ANY, std::to_string(values.endTimestamp), wxPoint(200, 110), wxSize(250, 24));
+	endTSCtrl = new wxTextCtrl(panel, wxID_ANY, std::to_string(values.endTimestamp), wxPoint(125, 110), wxSize(200, 24));
 	endTSText = new wxStaticText(panel, wxID_ANY, "End Timestamp: ", wxPoint(10, 110));
 	
-	largeKeyCtrl = new wxTextCtrl(panel, wxID_ANY, values.largeImageKey, wxPoint(200, 140), wxSize(250, 24));
+	largeKeyCtrl = new wxTextCtrl(panel, wxID_ANY, values.largeImageKey, wxPoint(125, 140), wxSize(200, 24));
 	largeKeyText = new wxStaticText(panel, wxID_ANY, "Large Image Key: ", wxPoint(10, 140));
 	
-	largeTextCtrl = new wxTextCtrl(panel, wxID_ANY, values.largeImageText, wxPoint(200, 170), wxSize(250, 24));
+	largeTextCtrl = new wxTextCtrl(panel, wxID_ANY, values.largeImageText, wxPoint(125, 170), wxSize(200, 24));
 	largeTextText = new wxStaticText(panel, wxID_ANY, "Large Image Text: ", wxPoint(10, 170));
 	
-	smallKeyCtrl = new wxTextCtrl(panel, wxID_ANY, values.smallImageKey, wxPoint(200, 200), wxSize(250, 24));
+	smallKeyCtrl = new wxTextCtrl(panel, wxID_ANY, values.smallImageKey, wxPoint(125, 200), wxSize(200, 24));
 	smallKeyText = new wxStaticText(panel, wxID_ANY, "Small Image Key: ", wxPoint(10, 200));
 	
-	smallTextCtrl = new wxTextCtrl(panel, wxID_ANY, values.smallImageText, wxPoint(200, 230), wxSize(250, 24));
+	smallTextCtrl = new wxTextCtrl(panel, wxID_ANY, values.smallImageText, wxPoint(125, 230), wxSize(200, 24));
 	smallTextText = new wxStaticText(panel, wxID_ANY, "Small Image Text: ", wxPoint(10, 230));
 	
-	partySizeCtrl = new wxTextCtrl(panel, wxID_ANY, std::to_string(values.partySize), wxPoint(200, 260), wxSize(250, 24));
+	partySizeCtrl = new wxTextCtrl(panel, wxID_ANY, std::to_string(values.partySize), wxPoint(125, 260), wxSize(200, 24));
 	partySizeText = new wxStaticText(panel, wxID_ANY, "Party Size: ", wxPoint(10, 260));
 	
-	partyMaxCtrl = new wxTextCtrl(panel, wxID_ANY, std::to_string(values.partyMax), wxPoint(200, 290), wxSize(250, 24));
+	partyMaxCtrl = new wxTextCtrl(panel, wxID_ANY, std::to_string(values.partyMax), wxPoint(125, 290), wxSize(200, 24));
 	partyMaxText = new wxStaticText(panel, wxID_ANY, "Party Max: ", wxPoint(10, 290));
 
 	okButton = new wxButton(this, wxID_ANY, wxT("Ok"), wxDefaultPosition, wxSize(150, 30));

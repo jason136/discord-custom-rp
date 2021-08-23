@@ -2,24 +2,26 @@
 #include <fstream>
 
 #include "file.h"
+#include "main.h"
 
 using namespace std;
 
 char filename[] = "config.txt";
-extern discord_fields values;
+discord_fields values;
 
-void GetFile() {
+struct discord_fields GetFile() {
     FILE *file;
     file = fopen(filename, "r");
 
     if (!file) {
-        values = { "a", "a", "a", 0, 0, "a", "a", "a", "a", "a", 0, 0 };
+        values = { "", "", "", 0, 0, "", "", "", "", "", 0, 0 };
         WriteFile();
     }
     else {
-        struct discord_fields values;
+        //struct discord_fields* values = (struct discord_fields*)malloc(sizeof(struct discord_fields));
         ReadFile();
     }
+    return values;
 }
 
 void WriteFile() {

@@ -1,8 +1,11 @@
 #include <string>
 
+#include "main.h"
 #include "discord.h"
 #include "file.h"
 #include "../include/discord_rpc.h"
+
+extern discord_fields values;
 
 void handleDiscordReady(const DiscordUser* request) {
 

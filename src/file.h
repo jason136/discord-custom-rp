@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef FILE_H
+#define FILE_H
+
 #include <string>
 
 struct discord_fields {
@@ -17,8 +20,10 @@ struct discord_fields {
     int partyMax;
 };
 
-void GetFile();
+struct discord_fields GetFile();
 
 void WriteFile();
 
 void ReadFile();
+
+#endif

@@ -51,4 +51,7 @@
   <ItemGroup>
     <None Include="bin\send-presence.exe" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="config.txt" />
+  </ItemGroup>
 </Project>

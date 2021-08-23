@@ -1,37 +1,88 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string>
+#include <iostream>
+#include <fstream>
 
 #include "file.h"
 
 using namespace std;
 
 char filename[] = "config.txt";
-discord_fields values = { "a", "a", "a", 1, 1111111, "a", "a", "a", "a", "a", 1, 5 };
+extern discord_fields values;
 
 void GetFile() {
     FILE *file;
     file = fopen(filename, "r");
 
     if (!file) {
-        file = fopen(filename, "w");
-        fwrite(&values, sizeof(struct discord_fields), 1, file);
-        fclose(file);
+        values = { "a", "a", "a", 0, 0, "a", "a", "a", "a", "a", 0, 0 };
+        WriteFile();
     }
     else {
-        struct discord_fields data;
-        while (fread(&data, sizeof(struct discord_fields), 1, file))
-        fclose(file);
-        values = data;
+        struct discord_fields values;
+        ReadFile();
     }
 }
 
-void RefreshFile() {
-    FILE *file;
-    file = fopen(filename, "w");
-    fwrite(&values, sizeof(struct discord_fields), 1, file);
-    fclose(file);
-    file = fopen(filename, "r");
-    while (fread(&values, sizeof(struct discord_fields), 1, file))
-    fclose(file);
+void WriteFile() {
+    ofstream file(filename);
+    file << values.clientID << "\n";
+    file << values.state << "\n";
+    file << values.details << "\n";
+    file << values.startTimestamp << "\n";
+    file << values.endTimestamp << "\n";
+    file << values.largeImageKey << "\n";
+    file << values.largeImageText << "\n";
+    file << values.smallImageKey << "\n";
+    file << values.smallImageText << "\n";
+    file << values.partyID << "\n";
+    file << values.partySize << "\n";
+    file << values.partyMax << "\n";
+    file.close();
+}
+
+void ReadFile() {
+    string text;
+    ifstream file(filename);
+    int temp = 0;
+    while (getline(file, text)) {
+        temp += 1;
+        switch (temp) {
+        case 1:
+            values.clientID = text;
+            break;
+        case 2:
+            values.state = text;
+            break;
+        case 3:
+            values.details = text;
+            break;
+        case 4:
+            values.startTimestamp = stoll(text);
+            break;
+        case 5:
+            values.endTimestamp = stoll(text);
+            break;
+        case 6:
+            values.largeImageKey = text;
+            break;
+        case 7:
+            values.largeImageText = text;
+            break;
+        case 8:
+            values.smallImageKey = text;
+            break;
+        case 9:
+            values.smallImageText = text;
+            break;
+        case 10:
+            values.partyID = text;
+            break;
+        case 11:
+            values.partySize = stol(text);
+            break;
+        case 12:
+            values.partyMax = stol(text);
+            break;
+        }
+    }
+    file.close();
 }

@@ -1,3 +1,5 @@
+#include <string>
+
 #include "discord.h"
 #include "file.h"
 #include "../include/discord_rpc.h"
@@ -26,7 +28,7 @@ void handleDiscordJoinRequest(const DiscordUser* request) {
 
 }
 
-void InitDiscord(const char* clientID)
+void InitDiscord(std::string clientID)
 {
 	DiscordEventHandlers handlers;
 	memset(&handlers, 0, sizeof(handlers));
@@ -38,7 +40,7 @@ void InitDiscord(const char* clientID)
 	handlers.joinRequest = handleDiscordJoinRequest;
 
 	// Discord_Initialize(const char* applicationId, DiscordEventHandlers * handlers, int autoRegister, const char* optionalSteamId);
-	Discord_Initialize(clientID, &handlers, 1, NULL);
+	Discord_Initialize(clientID.c_str(), &handlers, 1, NULL);
 }
 
 //void UpdatePresence(struct discord_fields data)
@@ -59,6 +61,8 @@ void InitDiscord(const char* clientID)
 //	discordPresence.joinSecret = "";
 //	Discord_UpdatePresence(&discordPresence);
 //}
+
+//.c_str()
 
 void UpdatePresence(struct discord_fields data)
 {

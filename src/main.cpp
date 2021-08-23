@@ -13,7 +13,7 @@
 #include <wx/wx.h>
 #endif
 
-extern struct discord_fields values;
+discord_fields values;
 
 class Dialouge : public wxDialog {
 public:
@@ -63,19 +63,16 @@ public:
 		clientID->Bind(wxEVT_BUTTON, [&](wxCommandEvent& event) {
 			wxTextEntryDialog textEntryDialog(this, "Message text", "Caption text");
 
-			values.clientID = textEntryDialog.GetValue().mb_str();
-			values.clientID = "875580955472068619";
-			RefreshFile();
+			if (textEntryDialog.ShowModal() == wxID_OK) {
+				clientIDtxt->SetLabel(textEntryDialog.GetValue().ToStdString());
+			}
+
+			values.clientID = textEntryDialog.GetValue().mb_str(wxConvUTF8);
+
+			WriteFile();
 
 			InitDiscord(values.clientID);
 
-			//InitDiscord(textEntryDialog.GetValue().mb_str(wxConvUTF8));
-			//InitDiscord(mystring);
-			//InitDiscord("875580955472068619");
-
-			if (textEntryDialog.ShowModal() == wxID_OK) {
-				label->SetLabel(values.clientID);
-			}
 			});
 
 		input->Bind(wxEVT_BUTTON, [&](wxCommandEvent& event) {
@@ -85,17 +82,25 @@ public:
 			});
 	}
 
+	void DiscordInitialized() {
+
+	}
+
 private:
 	wxPanel* panel = new wxPanel(this);
 	wxButton* clientID = new wxButton(panel, wxID_ANY, "Input Client ID", { 10, 10 }, { 100, 20 });
 	wxButton* input = new wxButton(panel, wxID_ANY, "Update Presencee", { 10, 80 });
-	wxStaticText* label = new wxStaticText(panel, wxID_ANY, values.clientID, {10, 50});
+	wxStaticText* discordInitialized = new wxStaticText(panel, wxID_ANY, "asdasdasdasd", { 10, 60 });
+	wxStaticText* clientIDmsg = new wxStaticText(panel, wxID_ANY, "Currently Loaded Client ID: ", {10, 40});
+	wxStaticText* clientIDtxt = new wxStaticText(panel, wxID_ANY, values.clientID, { 160, 40 });
 };
 
+
+Frame* frame = new Frame();
 class DiscordRP : public wxApp {
 	bool OnInit() override {
 		GetFile();
-		(new Frame())->Show();
+		frame->Show(true);
 		return true;
 	}
 };

@@ -1,21 +1,24 @@
 #pragma once
 
+#include <string>
+
 struct discord_fields {
-    const char* clientID;
-    const char* state;
-    const char* details;
+    std::string clientID;
+    std::string state;
+    std::string details;
     int64_t startTimestamp;
     int64_t endTimestamp;
-    const char* largeImageKey;
-    const char* largeImageText;
-    const char* smallImageKey;
-    const char* smallImageText;
-    const char* partyID;
+    std::string largeImageKey;
+    std::string largeImageText;
+    std::string smallImageKey;
+    std::string smallImageText;
+    std::string partyID;
     int partySize;
     int partyMax;
 };
 
 void GetFile();
 
-void RefreshFile();
+void WriteFile();
 
+void ReadFile();

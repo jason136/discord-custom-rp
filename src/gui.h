@@ -29,10 +29,37 @@ private:
 	wxBoxSizer* vbox;
 	wxBoxSizer* hbox;
 	wxStaticBox* box;
-	wxTextCtrl* tc;
-	wxTextCtrl* tc1;
-	wxTextCtrl* tc2;
-	wxTextCtrl* tc3;
+
+	wxTextCtrl* stateCtrl;
+	wxStaticText* stateText;
+
+	wxTextCtrl* detailsCtrl;
+	wxStaticText* detailsText;
+
+	wxTextCtrl* startTSCtrl;
+	wxStaticText* startTSText;
+
+	wxTextCtrl* endTSCtrl;
+	wxStaticText* endTSText;
+
+	wxTextCtrl* largeKeyCtrl;
+	wxStaticText* largeKeyText;
+
+	wxTextCtrl* largeTextCtrl;
+	wxStaticText* largeTextText;
+
+	wxTextCtrl* smallKeyCtrl;
+	wxStaticText* smallKeyText;
+
+	wxTextCtrl* smallTextCtrl;
+	wxStaticText* smallTextText;
+
+	wxTextCtrl* partySizeCtrl;
+	wxStaticText* partySizeText;
+
+	wxTextCtrl* partyMaxCtrl;
+	wxStaticText* partyMaxText;
+
 	wxButton* okButton;
 };
 

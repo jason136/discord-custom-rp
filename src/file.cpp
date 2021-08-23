@@ -14,7 +14,7 @@ struct discord_fields GetFile() {
     file = fopen(filename, "r");
 
     if (!file) {
-        values = { "", "", "", 0, 0, "", "", "", "", "", 0, 0 };
+        values = { "", "", "", 0, 0, "", "", "", "", 0, 0 };
         WriteFile();
     }
     else {
@@ -35,7 +35,6 @@ void WriteFile() {
     file << values.largeImageText << "\n";
     file << values.smallImageKey << "\n";
     file << values.smallImageText << "\n";
-    file << values.partyID << "\n";
     file << values.partySize << "\n";
     file << values.partyMax << "\n";
     file.close();
@@ -76,12 +75,9 @@ void ReadFile() {
             values.smallImageText = text;
             break;
         case 10:
-            values.partyID = text;
-            break;
-        case 11:
             values.partySize = stol(text);
             break;
-        case 12:
+        case 11:
             values.partyMax = stol(text);
             break;
         }

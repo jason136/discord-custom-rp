@@ -40,6 +40,9 @@ x64/
 *.out
 *.app
 
+Release/
+include/
+
 config.txt
 DiscordCustomRP.sln
 DiscordCustomRP.vcxproj

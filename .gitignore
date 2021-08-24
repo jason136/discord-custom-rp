@@ -41,3 +41,7 @@ x64/
 *.app
 
 config.txt
+DiscordCustomRP.sln
+DiscordCustomRP.vcxproj
+DiscordCustomRP.vcxproj.filters
+DiscordCustomRP.vcxproj.user

@@ -6,20 +6,16 @@
 #include "discord.h"
 #include "file.h"
 
-#include <wx/wxprec.h>
-#ifndef WX_PRECOMP
-	#include <wx/wx.h>
-#endif
-
 extern discord_fields values;
+extern Frame* frame;
 
-Dialouge::Dialouge(const wxString& title) : wxDialog(NULL, -1, title, wxDefaultPosition, wxSize(360, 420)) {
+Dialouge::Dialouge(const wxString& title) : wxDialog(NULL, -1, title, wxDefaultPosition, wxSize(352, 420)) {
 	panel = new wxPanel(this, -1);
 
 	vbox = new wxBoxSizer(wxVERTICAL);
 	hbox = new wxBoxSizer(wxHORIZONTAL);
 
-	box = new wxStaticBox(panel, wxID_ANY, wxT(""), wxPoint(5, 5), wxSize(325, 320));
+	box = new wxStaticBox(panel, wxID_ANY, wxT(""), wxPoint(5, 5), wxSize(326, 320));
 
 	detailsCtrl = new wxTextCtrl(panel, wxID_ANY, values.details, wxPoint(125, 20), wxSize(200, 24));
 	detailsText = new wxStaticText(panel, wxID_ANY, "Details: ", wxPoint(10, 20));
@@ -96,16 +92,15 @@ Dialouge::Dialouge(const wxString& title) : wxDialog(NULL, -1, title, wxDefaultP
 	Destroy();
 }
 
-Frame::Frame() : wxFrame(nullptr, wxID_ANY, "Discord Custom Rich Presence Client") {
-
+Frame::Frame() : wxFrame(nullptr, wxID_ANY, "Discord Custom Rich Presence Client", wxDefaultPosition) {
 	panel = new wxPanel(this);
-	clientID = new wxButton(panel, wxID_ANY, "Input Client ID", wxPoint(10, 10), wxSize(100, 20));
-	input = new wxButton(panel, wxID_ANY, "Update Presence", wxPoint(10, 80));
-	clientIDmsg = new wxStaticText(panel, wxID_ANY, "Currently Loaded Client ID: ", wxPoint(10, 45));
-	clientIDtxt = new wxStaticText(panel, wxID_ANY, values.clientID, wxPoint(160, 45));
+	clientID = new wxButton(panel, wxID_ANY, "Input Client ID", wxPoint(10, 10), wxSize(120, 20));
+	input = new wxButton(panel, wxID_ANY, "Update Presence", wxPoint(10, 60), wxSize(120, 20));
+	clientIDmsg = new wxStaticText(panel, wxID_ANY, "Currently Loaded Client ID: ", wxPoint(10, 37));
+	clientIDtxt = new wxStaticText(panel, wxID_ANY, values.clientID, wxPoint(160, 38));
 
 	clientID->Bind(wxEVT_BUTTON, [&](wxCommandEvent& event) {
-		wxTextEntryDialog textEntryDialog(this, "Message text", "Caption text", values.clientID);
+		wxTextEntryDialog textEntryDialog(this, "Discord Application Client ID:", "Input Client ID", values.clientID);
 
 		if (textEntryDialog.ShowModal() == wxID_OK) {
 			clientIDtxt->SetLabel(textEntryDialog.GetValue().ToStdString());
@@ -120,4 +115,9 @@ Frame::Frame() : wxFrame(nullptr, wxID_ANY, "Discord Custom Rich Presence Client
 		Dialouge* dialogue = new Dialouge(wxT("Update Presence"));
 		dialogue->Show(true);
 		});
+}
+
+void Frame::OnClose(wxCloseEvent& event) {
+	Discord_Shutdown();
+	Destroy();
 }

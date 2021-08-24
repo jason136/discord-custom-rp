@@ -1,5 +1,3 @@
-#pragma once
-
 #include <iostream>
 #include <fstream>
 
@@ -14,6 +12,8 @@
 #endif
 
 class DiscordRP : public wxApp {
+public:
 	Frame* frame;
+private:
 	bool OnInit() override;
 };

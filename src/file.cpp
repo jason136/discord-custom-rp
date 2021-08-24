@@ -2,7 +2,6 @@
 #include <fstream>
 
 #include "file.h"
-#include "main.h"
 
 using namespace std;
 
@@ -18,7 +17,6 @@ struct discord_fields GetFile() {
         WriteFile();
     }
     else {
-        //struct discord_fields* values = (struct discord_fields*)malloc(sizeof(struct discord_fields));
         ReadFile();
     }
     return values;

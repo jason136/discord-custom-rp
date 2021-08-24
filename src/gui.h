@@ -1,24 +1,22 @@
 #ifndef GUI_H
 #define GUI_H
 
-#include "main.h"
-
 #include <wx/wxprec.h>
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
 #endif
 
-
 class Frame : public wxFrame {
 public:
 	Frame();
+	void OnClose(wxCloseEvent& event);
+	wxStaticText* clientIDmsg;
+	wxStaticText* clientIDtxt;
+	wxStaticText* presencetxt;
 private:
 	wxPanel* panel;
 	wxButton* clientID;
 	wxButton* input;
-	wxStaticText* discordInitialized;
-	wxStaticText* clientIDmsg;
-	wxStaticText* clientIDtxt;
 };
 
 class Dialouge : public wxDialog {

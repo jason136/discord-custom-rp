@@ -4,10 +4,9 @@ extern discord_fields values;
 
 bool DiscordRP::OnInit() {
 
-	frame = new Frame();
-
 	wxInitAllImageHandlers();
 	values = GetFile();
+	frame = new Frame();
 
 	if (values.clientID != "") 
 		InitDiscord(values.clientID);

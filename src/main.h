@@ -14,6 +14,8 @@
 class DiscordRP : public wxApp {
 public:
 	Frame* frame;
+	void Hide();
+	void Show();
 private:
 	bool OnInit() override;
 };

@@ -60,19 +60,19 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\..\..\wxWidgets\wxwidgets.props" />
+    <Import Project="..\..\..\..\..\Libraries\wxWidgets\wxwidgets.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\..\..\wxWidgets\wxwidgets.props" />
+    <Import Project="..\..\..\..\..\Libraries\wxWidgets\wxwidgets.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\..\..\wxWidgets\wxwidgets.props" />
+    <Import Project="..\..\..\..\..\Libraries\wxWidgets\wxwidgets.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\..\..\..\wxWidgets\wxwidgets.props" />
+    <Import Project="..\..\..\..\..\Libraries\wxWidgets\wxwidgets.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -149,18 +149,17 @@
   <ItemGroup>
     <ClInclude Include="include\discord_register.h" />
     <ClInclude Include="include\discord_rpc.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="resource1.h" />
-    <ClInclude Include="resource2.h" />
     <ClInclude Include="src\discord.h" />
     <ClInclude Include="src\file.h" />
     <ClInclude Include="src\gui.h" />
+    <ClInclude Include="src\icon.h" />
     <ClInclude Include="src\main.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\discord.cpp" />
     <ClCompile Include="src\file.cpp" />
     <ClCompile Include="src\gui.cpp" />
+    <ClCompile Include="src\icon.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>

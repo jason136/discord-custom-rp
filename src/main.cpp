@@ -4,17 +4,29 @@ extern discord_fields values;
 
 bool DiscordRP::OnInit() {
 
-	wxInitAllImageHandlers();
+	AllocConsole();
+	freopen("CONOUT$", "w", stdout);
+	freopen("CONOUT$", "w", stderr);
+
 	values = GetFile();
 	frame = new Frame();
+	//taskBarIcon->SetIcon();
 
-	if (values.clientID != "") 
+	if (values.clientID != "") {
 		InitDiscord(values.clientID);
-	if (values.details != "") 
 		UpdatePresence(values);
-		
+	}
+	
 	frame->Show(true);
 	return true;
+}
+
+void DiscordRP::Hide() {
+	frame->Show(false);
+}
+
+void DiscordRP::Show() {
+	frame->Show(true);
 }
 
 wxIMPLEMENT_APP(DiscordRP);

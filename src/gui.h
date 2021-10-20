@@ -17,6 +17,7 @@ private:
 	wxPanel* panel;
 	wxButton* clientID;
 	wxButton* input;
+	wxButton* taskbar;
 };
 
 class Dialouge : public wxDialog {

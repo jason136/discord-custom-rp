@@ -5,6 +5,7 @@
 #include "gui.h"
 #include "discord.h"
 #include "file.h"
+#include "icon.h"
 
 extern discord_fields values;
 extern Frame* frame;
@@ -96,6 +97,7 @@ Frame::Frame() : wxFrame(nullptr, wxID_ANY, "Discord Custom Rich Presence Client
 	panel = new wxPanel(this);
 	clientID = new wxButton(panel, wxID_ANY, "Input Client ID", wxPoint(10, 10), wxSize(120, 20));
 	input = new wxButton(panel, wxID_ANY, "Update Presence", wxPoint(10, 60), wxSize(120, 20));
+	taskbar = new wxButton(panel, wxID_ANY, "Minimize to Tray", wxPoint(10, 100), wxSize(120, 20));
 	clientIDmsg = new wxStaticText(panel, wxID_ANY, "Currently Loaded Client ID: ", wxPoint(10, 37));
 	clientIDtxt = new wxStaticText(panel, wxID_ANY, values.clientID, wxPoint(160, 38));
 
@@ -114,6 +116,12 @@ Frame::Frame() : wxFrame(nullptr, wxID_ANY, "Discord Custom Rich Presence Client
 	input->Bind(wxEVT_BUTTON, [&](wxCommandEvent& event) {
 		Dialouge* dialogue = new Dialouge(wxT("Update Presence"));
 		dialogue->Show(true);
+		});
+
+	taskbar->Bind(wxEVT_BUTTON, [&](wxCommandEvent& event) {
+		TaskbarIcon().Minimize();
+		Hide();
+		std::cout << "hide ";
 		});
 }
 

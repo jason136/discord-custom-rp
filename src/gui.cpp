@@ -111,6 +111,7 @@ Frame::Frame() : wxFrame(nullptr, wxID_ANY, "Discord Custom Rich Presence Client
 		values.clientID = textEntryDialog.GetValue().mb_str(wxConvUTF8);
 		WriteFile();
 		InitDiscord(values.clientID);
+		UpdatePresence(values);
 		});
 
 	input->Bind(wxEVT_BUTTON, [&](wxCommandEvent& event) {

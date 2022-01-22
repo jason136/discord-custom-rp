@@ -8,15 +8,24 @@
 #include <wx/mstream.h >
 #include <wx/menu.h>
 
-class TaskbarIcon : wxTaskBarIcon {
+class TaskbarIcon : public wxTaskBarIcon {
 public:
 	TaskbarIcon();
 	wxTaskBarIcon* taskBarIcon;
 	void Minimize();
 	void Maximize();
-	void OnLeftDoubleClick(wxTaskBarIconEvent& event);
-	virtual wxMenu* CreatePopupMenu();
-private:
+
+	void OnLeftDoubleClick(wxTaskBarIconEvent&);
+	void OnMenuRestore(wxCommandEvent&);
+	void OnMenuExit(wxCommandEvent&);
+	void OnMenuSetNewIcon(wxCommandEvent&);
+	void OnMenuCheckmark(wxCommandEvent&);
+	void OnMenuUICheckmark(wxUpdateUIEvent&);
+	void OnMenuSub(wxCommandEvent&);
+	virtual wxMenu* CreatePopupMenu() wxOVERRIDE;
+
+	wxDECLARE_EVENT_TABLE();
+
 	wxIcon icon;
 };
 

@@ -10,7 +10,6 @@ bool DiscordRP::OnInit() {
 
 	values = GetFile();
 	frame = new Frame();
-	//taskBarIcon->SetIcon();
 
 	if (values.clientID != "") {
 		InitDiscord(values.clientID);

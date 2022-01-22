@@ -55,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\send-presence.exe" />
+    <None Include="src\smile.xpm">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="config.txt" />

@@ -62,23 +62,3 @@ void UpdatePresence(struct discord_fields values)
 	discordPresence.partyMax = values.partyMax;
 	Discord_UpdatePresence(&discordPresence);
 }
-
-
-
-//void UpdatePresence(struct discord_fields data)
-//{
-//	DiscordRichPresence discordPresence;
-//	memset(&discordPresence, 0, sizeof(discordPresence));
-//	discordPresence.state = "adasd";
-//	discordPresence.details = "asdasd";
-//	discordPresence.startTimestamp = 234234;
-//	discordPresence.endTimestamp = 2342342;
-//	discordPresence.largeImageKey = "hayasaka";
-//	discordPresence.largeImageText = "asdasd";
-//	discordPresence.smallImageKey = "hayasaka";
-//	discordPresence.smallImageText = "asdasd";
-//	discordPresence.partySize = 2;
-//	discordPresence.partyMax = 7;
-//	discordPresence.joinSecret = "";
-//	Discord_UpdatePresence(&discordPresence);
-//}

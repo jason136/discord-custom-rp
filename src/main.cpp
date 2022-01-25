@@ -8,9 +8,9 @@ static TaskbarIcon* trayIcon;
 
 bool DiscordRP::OnInit() {
 
-	AllocConsole();
-	freopen("CONOUT$", "w", stdout);
-	freopen("CONOUT$", "w", stderr);
+	//AllocConsole();
+	//freopen("CONOUT$", "w", stdout);
+	//freopen("CONOUT$", "w", stderr);
 	
 	values = GetFile();
 	window = new Window();
@@ -149,7 +149,7 @@ void Window::GetInput(wxCommandEvent& WXUNUSED(event)) {
 }
 
 void Window::Minimize(wxCommandEvent& WXUNUSED(event)) {
-	wxIcon icon = wxIcon(L"IDI_ICON2", wxBITMAP_TYPE_BMP_RESOURCE, 32, 32);
+	wxIcon icon = wxICON(IDI_ICON1);
 	trayIcon = new TaskbarIcon();
 	if (!trayIcon->SetIcon(icon, "Discord Custom Rich Presence Client")) {
 		std::cout << "icon failed";

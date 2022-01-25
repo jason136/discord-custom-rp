@@ -60,5 +60,8 @@ void UpdatePresence(struct discord_fields values)
 	discordPresence.smallImageText = values.smallImageText.c_str();
 	discordPresence.partySize = values.partySize;
 	discordPresence.partyMax = values.partyMax;
+	discordPresence.matchSecret = "4b2fdce12f639de8bfa7e3591b71a0d679d7c93f";
+	discordPresence.joinSecret = "sdf";
+	discordPresence.instance = 1;
 	Discord_UpdatePresence(&discordPresence);
 }
